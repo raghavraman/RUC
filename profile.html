@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        $('[data-toggle="offcanvas"]').click(function() {
+            $("#navigation").toggleClass("hidden-xs");
+        });
+    });
+
+    function textarea_height(TextArea, MaxHeight) {
+        textarea = TextArea;
+        textareaRows = textarea.value.split("\n");
+        if (textareaRows[0] != "undefined" && textareaRows.length < MaxHeight) counter = textareaRows.length;
+        else if (textareaRows.length >= MaxHeight) counter = MaxHeight;
+        else counter = 1;
+        textarea.rows = counter;
+    }
+
+
+    function editDetails(){
+        $('textarea').attr('readonly',false);
+        $('#cancelDetails').show();
+        $('#saveDetails').show();
+        $('#editDetails').hide();
+    }
+
+    function cancelEditDetails(){
+        $('textarea').attr('readonly',true);
+        $('#cancelDetails').hide();
+        $('#saveDetails').hide();
+        $('#editDetails').show();
+    }
+
+    function saveDetails(){
+  $('textarea').attr('readonly',true);
+        $('#cancelDetails').hide();
+        $('#saveDetails').hide();
+        $('#editDetails').show();
+        $.ajax()
+    }
+
+    </script>
+</head>
+
+<body class="home">
+    <div class="container-fluid display-table">
+        <div class="row display-table-row">
+            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+                <div class="logo">
+                    <a hef="home.html"><h2>RUC!</h2></a>
+                </div>
+                <div class="navi">
+                    <ul>
+                        <li><a href="home.html"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
+                        <li class="active"><a href="profile.html"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Profile</span></a></li>
+                        <li><a href="#"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">News Feeds</span></a></li>
+                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Events</span></a></li>
+                        <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10 col-sm-11 display-table-cell v-align">
+                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+                <div class="row">
+                    <header>
+                        <div class="col-md-7">
+                            <nav class="navbar-default pull-left">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="search hidden-xs hidden-sm">
+                                <input type="text" placeholder="Search" id="search">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="header-rightside">
+                                <ul class="list-inline header-top pull-right">
+                                    <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                                    <li>
+                                        <a href="#" class="icon-info">
+                                            <i class="fa fa-bell" aria-hidden="true"></i>
+                                            <span class="label label-primary">3</span>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zara
+                                            <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="navbar-content">
+                                                    <span>Zara Coller</span>
+                                                    <p class="text-muted small">
+                                                        collerzara@gmail.com
+                                                    </p>
+                                                    <div class="divider">
+                                                    </div>
+                                                    <a href="logout.html" class="view btn-sm active">Logout</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+                <div class="user-dashboard">
+                    <div class="detailsChanges">
+                        <button id="editDetails" type="button" class="btn btn-success" onclick="editDetails();">Edit Details</button>
+                        <button id="cancelDetails" type="button" class="btn btn-danger" onclick="cancelEditDetails();" style="display:none;">Cancel</button>
+                        <button id="saveDetails" type="button" class="pull-right btn btn-primary" onclick="saveDetails();" style="display:none;">Save</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
+                            <div class="card">
+                                <div class="halfLeft">
+                                    <img src="assets/img/dp.png" alt="Profile Pic" class="img-rounded img-responsive" />
+                                </div>
+                                <div class="halfRight">
+                                    <h2>Zara Coller</h2>
+                                    <cite title="Pittsburgh, USA"><i class="glyphicon glyphicon-map-marker">
+                                    </i>Pittsburgh, USA</cite>
+                                    <p class="profile_card">
+                                        <i class="glyphicon glyphicon-calendar"></i>I've lived here for 1 year
+                                        <br />
+                                        <i class="glyphicon glyphicon-gift"></i>Points:86
+                                    </p>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary">Genrate a Verification Code</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h2>Badges</h2>
+                                <div class="badges">
+                                    <div class="cell1"><img src="assets/img/badge.png" alt="Profile Pic" class="img-rounded img-responsive" /></div>
+                                    <div class="cell2"><img src="assets/img/badge.png" alt="Profile Pic" class="img-rounded img-responsive" /></div>
+                                    <div class="cell3"><img src="assets/img/badge.png" alt="Profile Pic" class="img-rounded img-responsive" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
+                            <div class="card">
+                                <h2>About Me</h2>
+                                <textarea id="about" class="form-control" rows="2" cols="50" readonly="readonly" onchange="javascript:textarea_height(about, 10);">This is a sample about me. I am good at many skills.This is a sample about me. I am good at many skills.</textarea>
+                            </div>
+                            <div class="card">
+                                <h2>My Favorite Sports/Activities</h2>
+                                <textarea id="sports" readonly="readonly" class="form-control" rows="3" cols="50" onchange="javascript:textarea_height(sports, 10);">BasketBall &#13;&#10;FootBall&#13;&#10;VolleyBall</textarea>
+                            </div>
+                            <div class="card">
+                                <h2>My hobbies</h2>
+                                <textarea id="hobbies" class="form-control" rows="2" cols="50" readonly="readonly" onchange="javascript:textarea_height(hobbies, 10);">Swimming &#13;&#10;Reading Mystery Novels;
+                                </textarea>
+                            </div>
+                            <div class="card">
+                                <h2>My Favorite Places</h2>
+                                <textarea id="places" class="form-control" rows="2" cols="50" readonly="readonly" onchange="javascript:textarea_height(places, 10);">Park &#13;&#10;Library
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
