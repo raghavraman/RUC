@@ -39,36 +39,26 @@
                     <div class="panel-body">
                         <div>
                             <h2 class="signUp"> 
-                                Get a Verification Code!
+                                Sign Up
                             </h2>
                         </div>
                         <div>
-                            <h4>
-                                If you don't know someone who is already a user and can give you a code,
-                                enter your info below and we will send one!
-                            </h4>
+                            <h3><label>
+                                Please enter the verification code:    </label>
+                            </h3>
                         </div>
-                        <div class="enterEmail">
-                            <form class="form-inline">
-                            <div class="formRow">
-                              <div class="form-group mb-2">
-                                <label for="name">Name: </label>
-                              </div>
+                        <div class="codeBox">
+                            <!-- <input id="code" onblur="codenetered()" type="text" name="code"  tabindex="1"  placeholder="000-admin-000" value=""> -->
+                            <form class="form-inline" action="verifycode.php" method="POST">
                               <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control" id="name" placeholder="John Doe" name="name">
+                                <input id="code" onblur="codenetered()" type="text" name="code" class="form-control" tabindex="1"  placeholder="123456789" value=""> 
                               </div>
-                            </div>
-                            <div class="formRow">
-                              <div class="form-group mb-2">
-                                <label for="staticEmail2">Email</label>
-                              </div>
-                              <div class="form-group mx-sm-3 mb-2">
-                                <input type="Email" class="form-control" id="Email" placeholder="john@gmail.com" name="email">
-                              </div>
-                            </div>
-
-                              <button type="submit" class="btn getCodebtn mb-2 sign">Submit</button>
+                              <button type="submit" class="btn btn-primary mb-2">Submit</button>
                             </form>
+                        </div><div>
+                            <h3>
+                                No code? Click <span><a href="getcode.html" class="signUp">here.</a></span>
+                            </h3>
                         </div>
                     </div>
                 </div>
