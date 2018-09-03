@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+ session_start();
+ $user_id = $_SESSION['user_id'];
+ if($user_id == null || $user_id = "")
+ {
+    header('location: index.php');
+ }
+ ?>
 <html>
 
 <head>
@@ -15,9 +22,9 @@
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     <script type="text/javascript">
-    //Function when users enters code
-    function codenetered() {
-        console.log(document.getElementById("code").value);
+    //Function when users enters phone number
+    function numentered() {
+        console.log(document.getElementById("number").value);
     }
     </script>
 </head>
@@ -39,36 +46,25 @@
                     <div class="panel-body">
                         <div>
                             <h2 class="signUp"> 
-                                Get a Verification Code!
+                                Almost done!
                             </h2>
                         </div>
                         <div>
-                            <h4>
-                                If you don't know someone who is already a user and can give you a code,
-                                enter your info below and we will send one!
-                            </h4>
+                            <h3><label>
+                                Please enter your phone number for RUC! updates (format: xxx-xxx-xxxx) </label>
+                            </h3>
                         </div>
-                        <div class="enterEmail">
-                            <form class="form-inline">
-                            <div class="formRow">
-                              <div class="form-group mb-2">
-                                <label for="name">Name: </label>
-                              </div>
+                        <div class="codeBox">
+                            <form class="form-inline" action="phonenumberhandler.php" method="POST">
                               <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control" id="name" placeholder="John Doe" name="name">
+                                <input id="phnumber" type="tel" name="phnumber" class="form-control" tabindex="1"  placeholder="XXX-XXX-XXXX" pattern="^\d{3}-\d{3}-\d{4}$" value="" required> 
                               </div>
-                            </div>
-                            <div class="formRow">
-                              <div class="form-group mb-2">
-                                <label for="staticEmail2">Email</label>
-                              </div>
-                              <div class="form-group mx-sm-3 mb-2">
-                                <input type="Email" class="form-control" id="Email" placeholder="john@gmail.com" name="email">
-                              </div>
-                            </div>
-
-                              <button type="submit" class="btn getCodebtn mb-2 sign">Submit</button>
+                              <button type="submit" class="btn btn-primary mb-2">Submit</button>
                             </form>
+                        </div><div>
+                            <h3>
+                                Skip this? Click <span><a href="home.php" class="signUp">here.</a></span>
+                            </h3>
                         </div>
                     </div>
                 </div>
